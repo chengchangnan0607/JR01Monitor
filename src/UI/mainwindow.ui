@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(00, 05, 10);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>6</number>
+    </property>
+    <widget class="QWidget" name="page_SelfTest"/>
+    <widget class="QWidget" name="page_BootOptions">
+     <widget class="QPushButton" name="pushButton_NewSurgery">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>130</y>
+        <width>121</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>新建手术</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_InstallationGuide"/>
+    <widget class="QWidget" name="page_MonitoringMain">
+     <widget class="QLabel" name="label_PumpID">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>24</y>
+        <width>170</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>3342 0098 22</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Speed">
+      <property name="geometry">
+       <rect>
+        <x>879</x>
+        <y>530</y>
+        <width>121</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/ic_转速设置card.png);
+background-color: rgb(17, 40, 67);
+font: 16pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_AlarmInfo3">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>670</y>
+        <width>301</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ubuntu</family>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(10, 30, 50);
+font: 16pt &quot;Ubuntu&quot;;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#4e9a06;&quot;&gt;3.未设置时钟报警,请设置时钟&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget_Curve">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>76</y>
+        <width>841</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);</string>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhNone</set>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page_CurvePump">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="QPushButton" name="pushButton_HistoryPump">
+        <property name="geometry">
+         <rect>
+          <x>724</x>
+          <y>10</y>
+          <width>96</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 18pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>历史记录</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>48</x>
+          <y>16</y>
+          <width>38</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:rgb(255, 255, 255);
+font:14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>流量</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_27">
+        <property name="geometry">
+         <rect>
+          <x>118</x>
+          <y>16</y>
+          <width>38</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>电流</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>48</x>
+          <y>226</y>
+          <width>38</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>压力</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="Line" name="line_4">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>25</y>
+          <width>10</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(24, 144, 255);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_7">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>25</y>
+          <width>10</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(82, 196, 26);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_8">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>237</y>
+          <width>10</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(19, 168, 168);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QChartView" name="widget_DownPump" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>254</y>
+          <width>801</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(17, 40, 67);</string>
+        </property>
+       </widget>
+       <widget class="QChartView" name="widget_UpPump" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>44</y>
+          <width>801</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(17, 40, 67);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>12</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/ic_历史记录.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_CurvePurge">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>48</x>
+          <y>226</y>
+          <width>38</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>压力</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="Line" name="line_10">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>25</y>
+          <width>10</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(24, 144, 255);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_HistoryPurge">
+        <property name="geometry">
+         <rect>
+          <x>724</x>
+          <y>10</y>
+          <width>96</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 18pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>历史记录</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>48</x>
+          <y>16</y>
+          <width>38</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:rgb(255, 255, 255);
+font:14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>流量</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="Line" name="line_11">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>237</y>
+          <width>10</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(19, 168, 168);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QChartView" name="widget_DownPurge" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>254</y>
+          <width>801</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(17, 40, 67);</string>
+        </property>
+       </widget>
+       <widget class="QChartView" name="widget_UpPurge" native="true">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>44</y>
+          <width>801</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(17, 40, 67);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>12</y>
+          <width>28</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/ic_历史记录.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_AlarmInfo2">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>640</y>
+        <width>301</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ubuntu</family>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(10, 30, 50);
+font: 16pt &quot;Ubuntu&quot;;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#c4a000;&quot;&gt;2.泵流量超范围,请尽快联系医院&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>24</y>
+        <width>28</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/img_logo28.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>855</x>
+        <y>28</y>
+        <width>1</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(201, 201, 201);</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Log">
+      <property name="geometry">
+       <rect>
+        <x>879</x>
+        <y>644</y>
+        <width>121</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/ic_报警日志card.png);
+background-color: rgb(17, 40, 67);
+font: 16pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget_Value">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>530</y>
+        <width>458</width>
+        <height>214</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_Value_Pump">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>24</x>
+          <y>24</y>
+          <width>62</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 20pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>血泵</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_ConnectWordsPump">
+        <property name="geometry">
+         <rect>
+          <x>378</x>
+          <y>27</y>
+          <width>72</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(115, 210, 22);
+font: 16pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>已连接</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_ConnectIconPump">
+        <property name="geometry">
+         <rect>
+          <x>361</x>
+          <y>36</y>
+          <width>8</width>
+          <height>8</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(115, 210, 22);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_FlowPump">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>76</y>
+          <width>89</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(24, 144, 255);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>46</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_Current">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>76</y>
+          <width>89</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(82, 196, 26);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>20</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_PressurePump">
+        <property name="geometry">
+         <rect>
+          <x>239</x>
+          <y>76</y>
+          <width>89</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(19, 194, 194);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>66</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>422</x>
+          <y>94</y>
+          <width>10</width>
+          <height>10</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/Image/ic-下拉.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_38">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>131</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>1000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_39">
+        <property name="geometry">
+         <rect>
+          <x>115</x>
+          <y>131</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>1000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_40">
+        <property name="geometry">
+         <rect>
+          <x>229</x>
+          <y>130</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>1000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_41">
+        <property name="geometry">
+         <rect>
+          <x>343</x>
+          <y>131</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>1000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_42">
+        <property name="geometry">
+         <rect>
+          <x>115</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>电流mA</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_43">
+        <property name="geometry">
+         <rect>
+          <x>343</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>转速level</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_44">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>流量l/min</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_45">
+        <property name="geometry">
+         <rect>
+          <x>229</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>压力mmHg</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_Speed">
+        <property name="geometry">
+         <rect>
+          <x>349</x>
+          <y>76</y>
+          <width>89</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(250, 173, 20);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>P2</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_ValuePurge">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="QLabel" name="label_46">
+        <property name="geometry">
+         <rect>
+          <x>247</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>压力mmHg</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_ConnectWordsPurge">
+        <property name="geometry">
+         <rect>
+          <x>378</x>
+          <y>27</y>
+          <width>72</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(115, 210, 22);
+font: 16pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>已连接</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_47">
+        <property name="geometry">
+         <rect>
+          <x>422</x>
+          <y>94</y>
+          <width>10</width>
+          <height>10</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/Image/ic-下拉.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_ConnectIconPurge">
+        <property name="geometry">
+         <rect>
+          <x>361</x>
+          <y>36</y>
+          <width>8</width>
+          <height>8</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(115, 210, 22);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_48">
+        <property name="geometry">
+         <rect>
+          <x>87</x>
+          <y>130</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>10000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_49">
+        <property name="geometry">
+         <rect>
+          <x>247</x>
+          <y>131</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>10000~10000</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_50">
+        <property name="geometry">
+         <rect>
+          <x>24</x>
+          <y>24</y>
+          <width>81</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 20pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>冲洗泵</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_51">
+        <property name="geometry">
+         <rect>
+          <x>87</x>
+          <y>163</y>
+          <width>114</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>流量l/min</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_PressurePurge">
+        <property name="geometry">
+         <rect>
+          <x>247</x>
+          <y>76</y>
+          <width>114</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(19, 194, 194);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>66</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_FlowPurge">
+        <property name="geometry">
+         <rect>
+          <x>87</x>
+          <y>76</y>
+          <width>114</width>
+          <height>45</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(24, 144, 255);
+font: 32pt &quot;Ubuntu&quot;;</string>
+        </property>
+        <property name="text">
+         <string>46</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_Charge">
+      <property name="geometry">
+       <rect>
+        <x>954</x>
+        <y>27</y>
+        <width>22</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/ic_充电中.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_DateTime">
+      <property name="geometry">
+       <rect>
+        <x>384</x>
+        <y>25</y>
+        <width>320</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>2022年7月11日 星期一 14:20</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_AlarmInfo1">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>610</y>
+        <width>301</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ubuntu</family>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(10, 30, 50);
+font: 16pt &quot;Ubuntu&quot;;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ef2929;&quot;&gt;1.泵连接失败,请连接泵&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Set">
+      <property name="geometry">
+       <rect>
+        <x>813</x>
+        <y>25</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/ic_设置.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>496</x>
+        <y>530</y>
+        <width>369</width>
+        <height>214</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_StateCharge">
+      <property name="geometry">
+       <rect>
+        <x>876</x>
+        <y>26</y>
+        <width>64</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>充电中</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>599</y>
+        <width>317</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(10, 30, 50);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>554</y>
+        <width>124</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);
+font: 20pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>报警信息</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_PumpStop">
+      <property name="geometry">
+       <rect>
+        <x>879</x>
+        <y>416</y>
+        <width>121</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/ic_停用血泵card.png);
+background-color: rgb(17, 40, 67);
+font: 16pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_AlarmLED">
+      <property name="geometry">
+       <rect>
+        <x>807</x>
+        <y>548</y>
+        <width>34</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);
+image: url(:/ic_报警.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Supply">
+      <property name="geometry">
+       <rect>
+        <x>990</x>
+        <y>27</y>
+        <width>22</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/ic_链接电源.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Back">
+      <property name="geometry">
+       <rect>
+        <x>771</x>
+        <y>24</y>
+        <width>25</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/ic_返回指南.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_PumpStart">
+      <property name="geometry">
+       <rect>
+        <x>879</x>
+        <y>302</y>
+        <width>121</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/矩形备份 9.png);
+background-color: rgb(17, 40, 67);
+font: 16pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Purge">
+      <property name="geometry">
+       <rect>
+        <x>890</x>
+        <y>189</y>
+        <width>97</width>
+        <height>86</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);
+font: 20pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+      </property>
+      <property name="text">
+       <string>冲洗泵</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>879</x>
+        <y>79</y>
+        <width>121</width>
+        <height>209</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Pump">
+      <property name="geometry">
+       <rect>
+        <x>890</x>
+        <y>90</y>
+        <width>97</width>
+        <height>86</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(17, 40, 67);
+font: 20pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255); </string>
+      </property>
+      <property name="text">
+       <string>血泵</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+      <attribute name="buttonGroup">
+       <string notr="true">buttonGroup</string>
+      </attribute>
+     </widget>
+     <zorder>label_PumpID</zorder>
+     <zorder>pushButton_Speed</zorder>
+     <zorder>stackedWidget_Curve</zorder>
+     <zorder>label</zorder>
+     <zorder>line</zorder>
+     <zorder>pushButton_Log</zorder>
+     <zorder>stackedWidget_Value</zorder>
+     <zorder>label_Charge</zorder>
+     <zorder>label_DateTime</zorder>
+     <zorder>label_3</zorder>
+     <zorder>label_StateCharge</zorder>
+     <zorder>label_5</zorder>
+     <zorder>label_4</zorder>
+     <zorder>label_Supply</zorder>
+     <zorder>label_AlarmInfo1</zorder>
+     <zorder>label_AlarmInfo2</zorder>
+     <zorder>label_AlarmInfo3</zorder>
+     <zorder>label_AlarmLED</zorder>
+     <zorder>pushButton_Set</zorder>
+     <zorder>pushButton_Back</zorder>
+     <zorder>pushButton_PumpStop</zorder>
+     <zorder>pushButton_PumpStart</zorder>
+     <zorder>label_2</zorder>
+     <zorder>pushButton_Pump</zorder>
+     <zorder>pushButton_Purge</zorder>
+    </widget>
+    <widget class="QWidget" name="page_HistoricalData"/>
+    <widget class="QWidget" name="page_AlarmLog"/>
+    <widget class="QWidget" name="page_SystemSetting"/>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

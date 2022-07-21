@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ic_下拉.png</file>
+        <file>ic_停用血泵.png</file>
+        <file>ic_停用血泵card.png</file>
+        <file>ic_充电中.png</file>
+        <file>ic_关机.png</file>
+        <file>ic_关闭.png</file>
+        <file>ic_冲洗泵选中card.png</file>
+        <file>ic_减.png</file>
+        <file>ic_加.png</file>
+        <file>ic_升级.png</file>
+        <file>ic_历史记录.png</file>
+        <file>ic_启用血泵.png</file>
+        <file>ic_报警.png</file>
+        <file>ic_报警弹窗.png</file>
+        <file>ic_报警日志card.png</file>
+        <file>ic_报警蓝色.png</file>
+        <file>ic_报警黄色.png</file>
+        <file>ic_排气.png</file>
+        <file>ic_排气card.png</file>
+        <file>ic_更换输液管.png</file>
+        <file>ic_更换输液管card.png</file>
+        <file>ic_更换输液袋.png</file>
+        <file>ic_更换输液袋card.png</file>
+        <file>ic_电量50%.png</file>
+        <file>ic_电量75%.png</file>
+        <file>ic_电量100%.png</file>
+        <file>ic_电量低25%.png</file>
+        <file>ic_血泵选中card.png</file>
+        <file>ic_设置.png</file>
+        <file>ic_转速设置.png</file>
+        <file>ic_转速设置card.png</file>
+        <file>ic_返回34.png</file>
+        <file>ic_返回指南.png</file>
+        <file>ic_链接电源.png</file>
+        <file>img_logo28.png</file>
+        <file>矩形备份 9.png</file>
+    </qresource>
+</RCC>
