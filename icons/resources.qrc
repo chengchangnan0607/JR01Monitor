@@ -36,5 +36,18 @@
         <file>ic_链接电源.png</file>
         <file>img_logo28.png</file>
         <file>矩形备份 9.png</file>
+        <file>ic_电量50.png</file>
+        <file>ic_恢复.png</file>
+        <file>ic_新建手术.png</file>
+        <file>ic_无报警绿色.png</file>
+        <file>ic_自检异常.png</file>
+        <file>ic_选中.png</file>
+        <file>ic_选择.png</file>
+        <file>步骤一三配图.png</file>
+        <file>步骤一配图.png</file>
+        <file>步骤二配图.png</file>
+        <file>步骤四配图.png</file>
+        <file>ic_查询.png</file>
+        <file>ic-上拉.png</file>
     </qresource>
 </RCC>
