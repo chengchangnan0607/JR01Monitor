@@ -9,6 +9,14 @@ MainWindow::MainWindow(QWidget *parent)
     createCommunication();
     qDebug() << "Communication connection succeeded";
 //    installationGuide();
+    //设置提示信息
+     ui->lineEdit->setPlaceholderText("请输入患者病例号");
+    //冲洗液容量下拉框
+    ui->comboBox_flushingfluid->setView(new QListView());
+    //葡萄糖浓度下拉框
+    ui->comboBox_glucose->setView(new QListView());
+    //肝素浓度下拉框
+    ui->comboBox_heparin->setView(new QListView());
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +51,18 @@ void MainWindow::createUI()
     connect(ui->pushButton_Set, &QPushButton::clicked, this, &MainWindow::systemSettings);
     connect(ui->pushButton_PumpStart, &QPushButton::clicked, this, &MainWindow::buttonMotorStartHandle);
     connect(ui->pushButton_PumpStop, &QPushButton::clicked, this, &MainWindow::buttonMotorStopHandle);
+
+    //安装指南--按下按钮页面切换
+    connect(ui->pushButton_know,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_sure,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step1_next,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step2_next,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step2_return,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step3_return,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step3_next,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step4_next,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step4_return,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_step5_return,&QPushButton::clicked,this,&MainWindow::switchPage);
 
     qDebug() << "UI creater succeeded";
 }
@@ -704,3 +724,47 @@ void MainWindow::installationGuide()
         delete stepPage;
     }
 }
+
+//安装指南--页面切换函数
+void MainWindow::switchPage(){
+    QPushButton *button = qobject_cast<QPushButton*>(sender());//得到按下的按钮的指针
+    if(button==ui->pushButton_know)
+        ui->stackedWidget_guide->setCurrentIndex(1);//根据按下的button按索引显示相应的页面
+    else if(button==ui->pushButton_sure)
+        ui->stackedWidget_guide->setCurrentIndex(2);
+    else if(button==ui->pushButton_step1_next)
+        ui->stackedWidget_guide->setCurrentIndex(3);
+    else if(button==ui->pushButton_step2_next)
+        ui->stackedWidget_guide->setCurrentIndex(4);
+    else if(button==ui->pushButton_step2_return)
+        ui->stackedWidget_guide->setCurrentIndex(2);
+    else if(button==ui->pushButton_step3_return)
+        ui->stackedWidget_guide->setCurrentIndex(3);
+    else if(button==ui->pushButton_step3_next)
+        ui->stackedWidget_guide->setCurrentIndex(5);
+    else if(button==ui->pushButton_step4_next)
+        ui->stackedWidget_guide->setCurrentIndex(6);
+    else if(button==ui->pushButton_step4_return)
+        ui->stackedWidget_guide->setCurrentIndex(4);
+    else if(button==ui->pushButton_step5_return)
+        ui->stackedWidget_guide->setCurrentIndex(5);
+}
+
+//新建手术按钮槽函数--按下后"确认"按钮才可用,编辑框才可编辑
+void MainWindow::on_pushButton_new_clicked()
+{
+    ui->pushButton_sure->setEnabled(true);
+    ui->lineEdit->setEnabled(true);
+    ui->pushButton_sure->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
+
+}
+
+//步骤四点击预充槽函数--按下后"下一步"按钮才可用,冲洗泵显示已连接
+void MainWindow::on_pushButton_step4_prefilled_clicked()
+{
+    ui->pushButton_step4_next->setEnabled(true);
+    ui->pushButton_step4_next->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
+    ui->label_step4_rinse->setStyleSheet("color:rgba(82,196,26,1);background-color:rgb(17, 40, 67);font: 18px;border-radius: 18px;border-color:rgb(17,40,67);");
+    ui->label_step4_rinse->setText("已连接");
+}
+

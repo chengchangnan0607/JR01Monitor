@@ -35,6 +35,8 @@ public:
 
     void createCommunication();
 
+    void switchPage();//页面切换函数
+
     QString setFontColor(E_ActiveFaults currentDisplayFaultID);
     void faultsBitToID(unsigned int activeFaults);
 
@@ -145,5 +147,8 @@ public slots:
     void displayActiveFaults();
     void displayAlarmLED();
     void powerOffHandle();
+private slots:
+    void on_pushButton_new_clicked();//新建手术按钮槽函数
+    void on_pushButton_step4_prefilled_clicked();//步骤四点击预充槽函数
 };
 #endif // MAINWINDOW_H
