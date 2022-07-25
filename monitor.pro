@@ -31,6 +31,7 @@ QMAKE_CXXFLAGS_RELEASE -= -O2
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/UI/softkey.cpp \
     src/main.cpp \
     src/UI/dialoghistoricaldata.cpp \
     src/UI/dialoghistoricaldatatimeset.cpp \
@@ -59,7 +60,8 @@ HEADERS += \
     src/BL/COMM/serialthread.h \
     src/BL/DB/database.h \
     src/BL/DB/datasearchthread.h \
-    src/BL/DB/datastoragethread.h
+    src/BL/DB/datastoragethread.h \
+    src/UI/softkey.h
 
 
 # Default rules for deployment.

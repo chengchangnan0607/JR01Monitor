@@ -6,6 +6,14 @@
 #include <QLabel>
 #include <QDateTime>
 #include <unistd.h>
+//
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QToolButton>
+#include <QMessageBox>
+#include <QEvent>
+#include <QtDebug>
+#include "softkey.h"
 
 #include "dialoghistoricaldata.h"
 #include "dialogsystemset.h"
@@ -14,9 +22,12 @@
 #include "../BL/COMM/controllercommunication.h"
 #include "dialogsteppages.h"
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class softkey;
 
 class MainWindow : public QMainWindow
 {
@@ -114,6 +125,8 @@ public:
     QImage *imageActiveAlarm;
 
     DialogLog *dialogLog;
+//软键盘
+    bool eventFilter(QObject *watched, QEvent *event)override;
 
 private:
     Ui::MainWindow *ui;
@@ -123,6 +136,8 @@ signals:
     void pumpSpeedSet(T_PumpSpeed pumpSpeed);
     void pumpSpeedGet();
     void realTimeClockSet(unsigned int timestamp);
+
+    void close_key();//软键盘
 
 public slots:
     void displayPumpSpeedGet(T_PumpSpeed pumpSpeedGet);
@@ -150,5 +165,8 @@ public slots:
 private slots:
     void on_pushButton_new_clicked();//新建手术按钮槽函数
     void on_pushButton_step4_prefilled_clicked();//步骤四点击预充槽函数
+    void on_pushButton_keyboard_close_clicked();//键盘关闭按钮槽函数
+
+    void hide_widget();//软键盘
 };
 #endif // MAINWINDOW_H

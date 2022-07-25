@@ -9,16 +9,22 @@ MainWindow::MainWindow(QWidget *parent)
     createCommunication();
     qDebug() << "Communication connection succeeded";
 //    installationGuide();
-    //设置提示信息
-     ui->lineEdit->setPlaceholderText("请输入患者病例号");
     //冲洗液容量下拉框
     ui->comboBox_flushingfluid->setView(new QListView());
     //葡萄糖浓度下拉框
     ui->comboBox_glucose->setView(new QListView());
     //肝素浓度下拉框
     ui->comboBox_heparin->setView(new QListView());
-}
 
+    //***********
+    ui->keyboard_data->hide();
+    ui->lineEdit_data->installEventFilter(this);
+    ui->lineEdit_time->installEventFilter(this);
+}
+void MainWindow::hide_widget()
+{
+    ui->keyboard_data->hide();
+}
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -63,6 +69,16 @@ void MainWindow::createUI()
     connect(ui->pushButton_step4_next,&QPushButton::clicked,this,&MainWindow::switchPage);
     connect(ui->pushButton_step4_return,&QPushButton::clicked,this,&MainWindow::switchPage);
     connect(ui->pushButton_step5_return,&QPushButton::clicked,this,&MainWindow::switchPage);
+
+    //报警事件日志--按下按钮页面切换
+    connect(ui->pushButton_alarm,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_event,&QPushButton::clicked,this,&MainWindow::switchPage);
+
+    //系统信息/设置--按下按钮页面切换
+    connect(ui->pushButton_setting,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_information,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_upgrade,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_SystemSetting_upgrade,&QPushButton::clicked,this,&MainWindow::switchPage);
 
     qDebug() << "UI creater succeeded";
 }
@@ -725,9 +741,10 @@ void MainWindow::installationGuide()
     }
 }
 
-//安装指南--页面切换函数
+//页面切换函数
 void MainWindow::switchPage(){
     QPushButton *button = qobject_cast<QPushButton*>(sender());//得到按下的按钮的指针
+    //安装指南--按下按钮页面切换
     if(button==ui->pushButton_know)
         ui->stackedWidget_guide->setCurrentIndex(1);//根据按下的button按索引显示相应的页面
     else if(button==ui->pushButton_sure)
@@ -748,6 +765,21 @@ void MainWindow::switchPage(){
         ui->stackedWidget_guide->setCurrentIndex(4);
     else if(button==ui->pushButton_step5_return)
         ui->stackedWidget_guide->setCurrentIndex(5);
+    //报警事件日志--按下按钮页面切换
+    else if(button==ui->pushButton_alarm)
+        ui->stackedWidget_alarm->setCurrentIndex(0);
+    else if(button==ui->pushButton_event)
+        ui->stackedWidget_alarm->setCurrentIndex(1);
+    //系统信息/设置--按下按钮页面切换
+    else if(button==ui->pushButton_setting)
+        ui->stackedWidget_SystemSetting->setCurrentIndex(0);
+    else if(button==ui->pushButton_information)
+        ui->stackedWidget_SystemSetting->setCurrentIndex(1);
+    else if(button==ui->pushButton_upgrade)
+        ui->stackedWidget_SystemSetting->setCurrentIndex(2);
+    else if(button==ui->pushButton_SystemSetting_upgrade)
+        ui->stackedWidget_upgrade->setCurrentIndex(1);
+
 }
 
 //新建手术按钮槽函数--按下后"确认"按钮才可用,编辑框才可编辑
@@ -766,5 +798,28 @@ void MainWindow::on_pushButton_step4_prefilled_clicked()
     ui->pushButton_step4_next->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
     ui->label_step4_rinse->setStyleSheet("color:rgba(82,196,26,1);background-color:rgb(17, 40, 67);font: 18px;border-radius: 18px;border-color:rgb(17,40,67);");
     ui->label_step4_rinse->setText("已连接");
+}
+
+//软键盘
+bool MainWindow::eventFilter(QObject *watched, QEvent *event)
+{
+
+    if ( (watched == ui->lineEdit_data) && (event->type() == QEvent::MouseButtonPress) )
+    {
+        ui->keyboard_data->show();
+        ui->lineEdit_data->setFocus();
+    }
+    else if ( (watched == ui->lineEdit_time) && (event->type() == QEvent::MouseButtonPress) )
+    {
+        ui->keyboard_data->show();
+        ui->lineEdit_time->setFocus();
+    }
+
+    return QMainWindow::eventFilter(watched,event);
+}
+//键盘关闭按钮槽函数
+void MainWindow::on_pushButton_keyboard_close_clicked()
+{
+    ui->keyboard_data->hide();
 }
 
