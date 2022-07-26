@@ -12,7 +12,9 @@
 #include <QToolButton>
 #include <QMessageBox>
 #include <QMainWindow>
+#include "mainwindow.h"
 
+class QMainWindow;
 class softkey:public QToolButton
 {
     Q_OBJECT

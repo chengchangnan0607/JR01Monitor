@@ -16,15 +16,22 @@ MainWindow::MainWindow(QWidget *parent)
     //肝素浓度下拉框
     ui->comboBox_heparin->setView(new QListView());
 
-    //***********
+    //软键盘
+    //先隐藏键盘
     ui->keyboard_data->hide();
+    ui->keyboard_general->hide();
+    ui->keyboard_SampleTime->hide();
+    ui->keyboard_Time->hide();
     ui->lineEdit_data->installEventFilter(this);
     ui->lineEdit_time->installEventFilter(this);
+    ui->lineEdit_length->installEventFilter(this);
+    ui->lineEdit_sensitivity->installEventFilter(this);
+    ui->lineEdit_password->installEventFilter(this);
+    ui->lineEdit_SampleTime->installEventFilter(this);
+    ui->lineEdit_StartTime->installEventFilter(this);
+    ui->lineEdit_EndTime->installEventFilter(this);
 }
-void MainWindow::hide_widget()
-{
-    ui->keyboard_data->hide();
-}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -79,6 +86,10 @@ void MainWindow::createUI()
     connect(ui->pushButton_information,&QPushButton::clicked,this,&MainWindow::switchPage);
     connect(ui->pushButton_upgrade,&QPushButton::clicked,this,&MainWindow::switchPage);
     connect(ui->pushButton_SystemSetting_upgrade,&QPushButton::clicked,this,&MainWindow::switchPage);
+
+    //历史数据界面--按下血泵/冲洗泵按钮页面切换
+    connect(ui->pushButton_HistoricalData_Pump,&QPushButton::clicked,this,&MainWindow::switchPage);
+    connect(ui->pushButton_HistoricalData_Purge,&QPushButton::clicked,this,&MainWindow::switchPage);
 
     qDebug() << "UI creater succeeded";
 }
@@ -779,6 +790,11 @@ void MainWindow::switchPage(){
         ui->stackedWidget_SystemSetting->setCurrentIndex(2);
     else if(button==ui->pushButton_SystemSetting_upgrade)
         ui->stackedWidget_upgrade->setCurrentIndex(1);
+    //历史数据界面--按下血泵/冲洗泵按钮页面切换
+    else if(button==ui->pushButton_HistoricalData_Pump)
+        ui->stackedWidget_HistoricalData->setCurrentIndex(0);
+    else if(button==ui->pushButton_HistoricalData_Purge)
+        ui->stackedWidget_HistoricalData->setCurrentIndex(1);
 
 }
 
@@ -800,26 +816,170 @@ void MainWindow::on_pushButton_step4_prefilled_clicked()
     ui->label_step4_rinse->setText("已连接");
 }
 
-//软键盘
+//软键盘--事件过滤器
 bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
 
     if ( (watched == ui->lineEdit_data) && (event->type() == QEvent::MouseButtonPress) )
     {
+        ui->label_keyboard_data->setText("格式：YY-MM-DD ，\n如2022年5月17日｜20220517");
+        ui->lineEdit_keyboard_data->setText("");
         ui->keyboard_data->show();
-        ui->lineEdit_data->setFocus();
+        ui->keyboard_general->hide();
+        ui->lineEdit_keyboard_data->setFocus();
     }
     else if ( (watched == ui->lineEdit_time) && (event->type() == QEvent::MouseButtonPress) )
     {
+        ui->label_keyboard_data->setText("格式：HH-MM-SS ，\n如12时03分17秒即输出120317");
+        ui->lineEdit_keyboard_data->setText("");
         ui->keyboard_data->show();
-        ui->lineEdit_time->setFocus();
+        ui->keyboard_general->hide();
+        ui->lineEdit_keyboard_data->setFocus();
     }
-
+    else if ( (watched == ui->lineEdit_length) && (event->type() == QEvent::MouseButtonPress) )
+    {
+        ui->lineEdit_keyboard_general->setText("");
+        ui->keyboard_general->setGeometry(580,60,364,390);
+        ui->keyboard_general->show();
+        ui->keyboard_data->hide();
+        ui->lineEdit_keyboard_general->setFocus();
+        w = 0;
+    }
+    else if ( (watched == ui->lineEdit_sensitivity) && (event->type() == QEvent::MouseButtonPress) )
+    {
+        ui->lineEdit_keyboard_general->setText("");
+        ui->keyboard_general->setGeometry(600,100,364,390);
+        ui->keyboard_general->show();
+        ui->keyboard_data->hide();
+        ui->lineEdit_keyboard_general->setFocus();
+        w = 1;
+    }
+    else if ( (watched == ui->lineEdit_password) && (event->type() == QEvent::MouseButtonPress) )
+    {
+        ui->lineEdit_keyboard_general->setText("");
+        ui->keyboard_general->setGeometry(600,320,364,390);
+        ui->keyboard_general->show();
+        ui->keyboard_data->hide();
+        ui->lineEdit_keyboard_general->setFocus();
+        w = 2;
+    }
+    else if((watched == ui->lineEdit_SampleTime) && (event->type() == QEvent::MouseButtonPress))
+    {
+        ui->lineEdit_keyboard_SampleTime->setText("");
+        ui->keyboard_SampleTime->show();
+        ui->keyboard_Time->hide();
+        ui->lineEdit_keyboard_SampleTime->setFocus();
+    }
+    else if((watched == ui->lineEdit_StartTime) && (event->type() == QEvent::MouseButtonPress))
+    {
+        ui->lineEdit_keyboard_Time->setText("");
+        ui->keyboard_Time->setGeometry(50,110,364,450);
+        ui->keyboard_Time->show();
+        ui->keyboard_SampleTime->hide();
+        ui->lineEdit_keyboard_Time->setFocus();
+        w = 3;
+    }
+    else if((watched == ui->lineEdit_EndTime) && (event->type() == QEvent::MouseButtonPress))
+    {
+        ui->lineEdit_keyboard_Time->setText("");
+        ui->keyboard_Time->setGeometry(300,110,364,450);
+        ui->keyboard_Time->show();
+        ui->keyboard_SampleTime->hide();
+        ui->lineEdit_keyboard_Time->setFocus();
+        w = 4;
+    }
     return QMainWindow::eventFilter(watched,event);
 }
-//键盘关闭按钮槽函数
-void MainWindow::on_pushButton_keyboard_close_clicked()
+
+//键盘Enter键槽函数
+void MainWindow::on_toolButton_enter_clicked()
+{
+    if(ui->label_keyboard_data->text() == "格式：YY-MM-DD ，\n如2022年5月17日｜20220517")
+    {
+        ui->lineEdit_data->setText(ui->lineEdit_keyboard_data->text());
+    }
+    else if(ui->label_keyboard_data->text() == "格式：HH-MM-SS ，\n如12时03分17秒即输出120317")
+    {
+        ui->lineEdit_time->setText(ui->lineEdit_keyboard_data->text());
+    }
+    ui->keyboard_data->hide();
+}
+
+//键盘exit槽函数--按下退出键盘
+void MainWindow::on_toolButton_exit_clicked()
 {
     ui->keyboard_data->hide();
+}
+
+//键盘ce槽函数
+void MainWindow::on_toolButton_ce_clicked()
+{
+    ui->lineEdit_keyboard_data->setText("");
+}
+
+//通用键盘exit槽函数--按下退出键盘
+void MainWindow::on_toolButton_exit_general_clicked()
+{
+    ui->keyboard_general->hide();
+}
+
+//通用键盘Enter键槽函数
+void MainWindow::on_toolButton_enter_general_clicked()
+{
+    if(w==0)
+        ui->lineEdit_length->setText(ui->lineEdit_keyboard_general->text());
+    else if(w==1)
+        ui->lineEdit_sensitivity->setText(ui->lineEdit_keyboard_general->text());
+    else if(w==2)
+        ui->lineEdit_password->setText(ui->lineEdit_keyboard_general->text());
+    ui->keyboard_general->hide();
+}
+
+//通用键盘ce槽函数
+void MainWindow::on_toolButton_ce_general_clicked()
+{
+    ui->lineEdit_keyboard_general->setText("");
+}
+
+//采样时间键盘exit槽函数--按下退出键盘
+void MainWindow::on_toolButton_exit_SampleTime_clicked()
+{
+    ui->keyboard_SampleTime->hide();
+}
+
+//采样时间键盘ce槽函数
+void MainWindow::on_toolButton_ce_SampleTime_clicked()
+{
+    ui->lineEdit_keyboard_SampleTime->setText("");
+}
+
+//采样时间键盘Enter键槽函数
+void MainWindow::on_toolButton_enter_SampleTime_clicked()
+{
+    ui->lineEdit_SampleTime->setText(ui->lineEdit_keyboard_SampleTime->text());
+    ui->keyboard_SampleTime->hide();
+}
+
+
+//时间键盘ce槽函数
+void MainWindow::on_toolButton_ce_Time_clicked()
+{
+    ui->lineEdit_keyboard_Time->setText("");
+}
+
+//时间键盘exit槽函数--按下退出键盘
+void MainWindow::on_toolButton_exit_Time_clicked()
+{
+    ui->keyboard_Time->hide();
+}
+
+//时间键盘Enter键槽函数
+void MainWindow::on_toolButton_enter_Time_clicked()
+{
+    if(w==3)
+        ui->lineEdit_StartTime->setText(ui->lineEdit_keyboard_Time->text());
+    else if(w==4)
+        ui->lineEdit_EndTime->setText(ui->lineEdit_keyboard_Time->text());
+    ui->keyboard_Time->hide();
 }
 
