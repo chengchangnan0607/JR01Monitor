@@ -22,6 +22,8 @@
 #include "../BL/COMM/communicationprotocol.h"
 #include "../BL/COMM/controllercommunication.h"
 #include "dialogsteppages.h"
+#include "dialogkeytime.h"
+#include "dialogkeygeneral.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -128,8 +130,18 @@ public:
     DialogLog *dialogLog;
 //软键盘--事件过滤器
     bool eventFilter(QObject *watched, QEvent *event)override;
-//用于辨别目前光标处于哪个LineEdit  w=0--初始腔长度  w=1--灵敏度  w=2--输入密码  w=3--启始时间  w=4--结束时间
-    int w = 0;
+
+    int startHourInt = 0;
+    int startMinuteInt = 0;
+    int endHourInt = 0;
+    int endMinuteInt = 0;
+    int dataYearInt = 0;
+    int dataMonthInt = 0;
+    int dataDayInt = 0;
+    int timeHourInt = 0;
+    int timeMinuteInt = 0;
+    int timeSecondInt = 0;
+    int sampletimeInt = 0;
 
 private:
     Ui::MainWindow *ui;
@@ -169,17 +181,5 @@ private slots:
     void on_pushButton_new_clicked();//新建手术按钮槽函数
     void on_pushButton_step4_prefilled_clicked();//步骤四点击预充槽函数
 
-    void on_toolButton_enter_clicked();//键盘Enter键槽函数
-    void on_toolButton_exit_clicked();//键盘exit槽函数
-    void on_toolButton_ce_clicked();//键盘ce槽函数
-    void on_toolButton_exit_general_clicked();//通用键盘exit槽函数
-    void on_toolButton_enter_general_clicked();//通用键盘enter槽函数
-    void on_toolButton_ce_general_clicked();
-    void on_toolButton_exit_SampleTime_clicked();
-    void on_toolButton_ce_SampleTime_clicked();
-    void on_toolButton_enter_SampleTime_clicked();
-    void on_toolButton_ce_Time_clicked();
-    void on_toolButton_exit_Time_clicked();
-    void on_toolButton_enter_Time_clicked();
 };
 #endif // MAINWINDOW_H

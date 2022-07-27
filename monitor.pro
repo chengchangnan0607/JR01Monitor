@@ -31,6 +31,8 @@ QMAKE_CXXFLAGS_RELEASE -= -O2
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/UI/dialogkeygeneral.cpp \
+    src/UI/dialogkeytime.cpp \
     src/UI/softkey.cpp \
     src/main.cpp \
     src/UI/dialoghistoricaldata.cpp \
@@ -51,6 +53,8 @@ HEADERS += \
     src/UI/dialoghistoricaldata.h \
     src/UI/dialoghistoricaldatatimeset.h \
     src/UI/dialoginputnumber.h \
+    src/UI/dialogkeygeneral.h \
+    src/UI/dialogkeytime.h \
     src/UI/dialoglog.h \
     src/UI/dialogsteppages.h \
     src/UI/dialogsystemset.h \
@@ -76,6 +80,8 @@ FORMS += \
     src/UI/dialoghistoricaldata.ui \
     src/UI/dialoghistoricaldatatimeset.ui \
     src/UI/dialoginputnumber.ui \
+    src/UI/dialogkeygeneral.ui \
+    src/UI/dialogkeytime.ui \
     src/UI/dialoglog.ui \
     src/UI/dialogsteppages.ui \
     src/UI/dialogsystemset.ui \

@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dialogkeytime.h"
+#include "ui_dialogkeytime.h"
+#include "dialogkeygeneral.h"
+#include "ui_dialogkeygeneral.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,19 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     createCommunication();
     qDebug() << "Communication connection succeeded";
 //    installationGuide();
-    //冲洗液容量下拉框
-    ui->comboBox_flushingfluid->setView(new QListView());
-    //葡萄糖浓度下拉框
-    ui->comboBox_glucose->setView(new QListView());
-    //肝素浓度下拉框
-    ui->comboBox_heparin->setView(new QListView());
 
-    //软键盘
-    //先隐藏键盘
-    ui->keyboard_data->hide();
-    ui->keyboard_general->hide();
-    ui->keyboard_SampleTime->hide();
-    ui->keyboard_Time->hide();
+    //加入事件过滤器
     ui->lineEdit_data->installEventFilter(this);
     ui->lineEdit_time->installEventFilter(this);
     ui->lineEdit_length->installEventFilter(this);
@@ -29,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_password->installEventFilter(this);
     ui->lineEdit_SampleTime->installEventFilter(this);
     ui->lineEdit_StartTime->installEventFilter(this);
+    ui->lineEdit_StartTime->setMouseTracking(true);
     ui->lineEdit_EndTime->installEventFilter(this);
 }
 
@@ -802,9 +796,9 @@ void MainWindow::switchPage(){
 void MainWindow::on_pushButton_new_clicked()
 {
     ui->pushButton_sure->setEnabled(true);
-    ui->lineEdit->setEnabled(true);
+    ui->lineEdit_patientnumber->setEnabled(true);
     ui->pushButton_sure->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
-
+    ui->lineEdit_patientnumber->installEventFilter(this); //输入患者病例号编辑框加入事件过滤器
 }
 
 //步骤四点击预充槽函数--按下后"下一步"按钮才可用,冲洗泵显示已连接
@@ -816,170 +810,266 @@ void MainWindow::on_pushButton_step4_prefilled_clicked()
     ui->label_step4_rinse->setText("已连接");
 }
 
-//软键盘--事件过滤器
+//键盘--事件过滤器
 bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
-
+    //系统日期设置
     if ( (watched == ui->lineEdit_data) && (event->type() == QEvent::MouseButtonPress) )
     {
-        ui->label_keyboard_data->setText("格式：YY-MM-DD ，\n如2022年5月17日｜20220517");
-        ui->lineEdit_keyboard_data->setText("");
-        ui->keyboard_data->show();
-        ui->keyboard_general->hide();
-        ui->lineEdit_keyboard_data->setFocus();
+        Dialogkeytime A;
+        A.switchkey2();
+        A.exec();
+        if(A.enter==1)
+        {
+            QString dateStr = A.edit;
+            if(dateStr.length()==8)
+            {
+                QString yearStr = dateStr.mid(0, 4);
+                dataYearInt = yearStr.toInt();
+                QString monthStr = dateStr.mid(4, 2);
+                dataMonthInt = monthStr.toInt();
+                QString dayStr = dateStr.mid(6, 2);
+                dataDayInt = dayStr.toInt();
+                //如果是闰年
+                if((dataYearInt % 4 == 0 && dataYearInt % 100 != 0)||(dataYearInt % 400 == 0))
+                {
+                    //大月
+                    if((dataMonthInt==1)||(dataMonthInt==3)||(dataMonthInt==5)||(dataMonthInt==7)||(dataMonthInt==8)||(dataMonthInt==10)||(dataMonthInt==12))
+                    {
+                        if(dataDayInt<=31)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //小月
+                    else if((dataMonthInt==4)||(dataMonthInt==6)||(dataMonthInt==9)||(dataMonthInt==11))
+                    {
+                        if(dataDayInt<=30)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //2月
+                    else if(dataMonthInt==2)
+                    {
+                        if(dataDayInt<=29)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                }
+                else
+                {
+                    //大月
+                    if((dataMonthInt==1)||(dataMonthInt==3)||(dataMonthInt==5)||(dataMonthInt==7)||(dataMonthInt==8)||(dataMonthInt==10)||(dataMonthInt==12))
+                    {
+                        if(dataDayInt<=31)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //小月
+                    else if((dataMonthInt==4)||(dataMonthInt==6)||(dataMonthInt==9)||(dataMonthInt==11))
+                    {
+                        if(dataDayInt<=30)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //2月
+                    else if(dataMonthInt==2)
+                    {
+                        if(dataDayInt<=28)
+                            ui->lineEdit_data->setText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                }
+
+            }
+            else
+            {
+                qDebug() << "输入日期格式不正确";
+                dataYearInt = dataMonthInt = dataDayInt =0;
+            }
+        }
+
     }
+
+    //系统时间设置
     else if ( (watched == ui->lineEdit_time) && (event->type() == QEvent::MouseButtonPress) )
     {
-        ui->label_keyboard_data->setText("格式：HH-MM-SS ，\n如12时03分17秒即输出120317");
-        ui->lineEdit_keyboard_data->setText("");
-        ui->keyboard_data->show();
-        ui->keyboard_general->hide();
-        ui->lineEdit_keyboard_data->setFocus();
+        Dialogkeytime A;
+        A.switchkey3();
+        A.exec();
+        if(A.enter==1)
+        {
+            QString dateStr = A.edit;
+            if(dateStr.length()==6)
+            {
+                QString hourStr = dateStr.mid(0, 2);
+                timeHourInt = hourStr.toInt();
+                QString minuteStr = dateStr.mid(2, 2);
+                timeMinuteInt = minuteStr.toInt();
+                QString secondStr = dateStr.mid(4, 2);
+                timeSecondInt = secondStr.toInt();
+                if((timeHourInt >= 24) || (timeMinuteInt >= 60) || (timeSecondInt >= 60))
+                {
+                    qDebug() << "输入时间格式不正确";
+                    timeHourInt = timeMinuteInt = timeSecondInt = 0;
+                }
+                else
+                {
+                    ui->lineEdit_time->setText(hourStr+":"+minuteStr+":"+secondStr);
+                }
+            }
+            else
+            {
+                qDebug() << "输入时间格式不正确";
+                timeHourInt = timeMinuteInt = timeSecondInt = 0;
+            }
+        }
+
     }
+
+    //初始腔长度设置
     else if ( (watched == ui->lineEdit_length) && (event->type() == QEvent::MouseButtonPress) )
     {
-        ui->lineEdit_keyboard_general->setText("");
-        ui->keyboard_general->setGeometry(580,60,364,390);
-        ui->keyboard_general->show();
-        ui->keyboard_data->hide();
-        ui->lineEdit_keyboard_general->setFocus();
-        w = 0;
+        Dialogkeygeneral A;
+        A.exec();
+        if(A.enter==1)
+        {
+            QString lengthStr = A.edit;
+            ui->lineEdit_length->setText(lengthStr);
+        }
     }
+
+    //敏感度设置
     else if ( (watched == ui->lineEdit_sensitivity) && (event->type() == QEvent::MouseButtonPress) )
     {
-        ui->lineEdit_keyboard_general->setText("");
-        ui->keyboard_general->setGeometry(600,100,364,390);
-        ui->keyboard_general->show();
-        ui->keyboard_data->hide();
-        ui->lineEdit_keyboard_general->setFocus();
-        w = 1;
+        Dialogkeygeneral A;
+        A.exec();
+        if(A.enter==1)
+        {
+            QString sensitivityStr = A.edit;
+            ui->lineEdit_sensitivity->setText(sensitivityStr);
+        }
     }
+
+    //密码输入
     else if ( (watched == ui->lineEdit_password) && (event->type() == QEvent::MouseButtonPress) )
     {
-        ui->lineEdit_keyboard_general->setText("");
-        ui->keyboard_general->setGeometry(600,320,364,390);
-        ui->keyboard_general->show();
-        ui->keyboard_data->hide();
-        ui->lineEdit_keyboard_general->setFocus();
-        w = 2;
+        Dialogkeygeneral A;
+        A.exec();
+        if(A.enter==1)
+        {
+            QString passwordStr = A.edit;
+            ui->lineEdit_password->setText(passwordStr);
+            ui->lineEdit_password->setEchoMode(QLineEdit::Password);//设置输入密码不可见
+        }
     }
+
+    //采样时间设置
     else if((watched == ui->lineEdit_SampleTime) && (event->type() == QEvent::MouseButtonPress))
     {
-        ui->lineEdit_keyboard_SampleTime->setText("");
-        ui->keyboard_SampleTime->show();
-        ui->keyboard_Time->hide();
-        ui->lineEdit_keyboard_SampleTime->setFocus();
+        Dialogkeytime A;
+        A.switchkey4();
+        A.exec();
+        if(A.enter==1)
+        {
+            QString sampleTimeStr = A.edit;
+            sampletimeInt = sampleTimeStr.toInt();
+            if(sampletimeInt>=30)
+            {
+                ui->lineEdit_SampleTime->setText(sampleTimeStr);
+            }
+            else
+            {
+                qDebug() << "采样时间输入错误，最小值30";
+                sampletimeInt = 0;
+            }
+        }
     }
+
+    //起始时间设置
     else if((watched == ui->lineEdit_StartTime) && (event->type() == QEvent::MouseButtonPress))
     {
-        ui->lineEdit_keyboard_Time->setText("");
-        ui->keyboard_Time->setGeometry(50,110,364,450);
-        ui->keyboard_Time->show();
-        ui->keyboard_SampleTime->hide();
-        ui->lineEdit_keyboard_Time->setFocus();
-        w = 3;
+
+        Dialogkeytime A;
+        A.switchkey1();
+        A.exec();
+        if(A.enter==1)
+        {
+            QString dateStr = A.edit;
+            if(dateStr.length()==4)
+            {
+                QString hourStr = dateStr.mid(0, 2);
+                startHourInt = hourStr.toInt();
+                QString minuteStr = dateStr.mid(2, 2);
+                startMinuteInt = minuteStr.toInt();
+                if((startHourInt < 24) && (startMinuteInt < 60))
+                {
+                    ui->lineEdit_StartTime->setText(hourStr+":"+minuteStr);
+                }
+                else
+                {
+                    qDebug() << "输入时间格式不正确";
+                    startHourInt = startMinuteInt = 0;
+                }
+            }
+            else
+            {
+                qDebug() << "输入时间格式不正确";
+                startHourInt = startMinuteInt = 0;
+            }
+        }
     }
+
+    //结束时间设置
     else if((watched == ui->lineEdit_EndTime) && (event->type() == QEvent::MouseButtonPress))
     {
-        ui->lineEdit_keyboard_Time->setText("");
-        ui->keyboard_Time->setGeometry(300,110,364,450);
-        ui->keyboard_Time->show();
-        ui->keyboard_SampleTime->hide();
-        ui->lineEdit_keyboard_Time->setFocus();
-        w = 4;
+        Dialogkeytime A;
+        A.switchkey1();
+        A.exec();
+        if(A.enter==1)
+        {
+            QString dateStr = A.edit;
+            if(dateStr.length()==4)
+            {
+                QString hourStr = dateStr.mid(0, 2);
+                endHourInt = hourStr.toInt();
+                QString minuteStr = dateStr.mid(2, 2);
+                startMinuteInt = minuteStr.toInt();
+                if((endHourInt < 24) && (endMinuteInt < 60))
+                {
+                    ui->lineEdit_EndTime->setText(hourStr+":"+minuteStr);
+                }
+                else
+                {
+                    qDebug() << "输入时间格式不正确";
+                    endHourInt = endMinuteInt = 0;
+                }
+            }
+            else
+            {
+                qDebug() << "输入时间格式不正确";
+                endHourInt = endMinuteInt = 0;
+            }
+        }
     }
+
+    //患者病例号输入
+    else if((watched == ui->lineEdit_patientnumber) && (event->type() == QEvent::MouseButtonPress))
+    {
+        Dialogkeygeneral A;
+        A.exec();
+        if(A.enter==1)
+        {
+            QString patientnumberStr = A.edit;
+            ui->lineEdit_patientnumber->setText(patientnumberStr);
+        }
+
+    }
+
     return QMainWindow::eventFilter(watched,event);
 }
-
-//键盘Enter键槽函数
-void MainWindow::on_toolButton_enter_clicked()
-{
-    if(ui->label_keyboard_data->text() == "格式：YY-MM-DD ，\n如2022年5月17日｜20220517")
-    {
-        ui->lineEdit_data->setText(ui->lineEdit_keyboard_data->text());
-    }
-    else if(ui->label_keyboard_data->text() == "格式：HH-MM-SS ，\n如12时03分17秒即输出120317")
-    {
-        ui->lineEdit_time->setText(ui->lineEdit_keyboard_data->text());
-    }
-    ui->keyboard_data->hide();
-}
-
-//键盘exit槽函数--按下退出键盘
-void MainWindow::on_toolButton_exit_clicked()
-{
-    ui->keyboard_data->hide();
-}
-
-//键盘ce槽函数
-void MainWindow::on_toolButton_ce_clicked()
-{
-    ui->lineEdit_keyboard_data->setText("");
-}
-
-//通用键盘exit槽函数--按下退出键盘
-void MainWindow::on_toolButton_exit_general_clicked()
-{
-    ui->keyboard_general->hide();
-}
-
-//通用键盘Enter键槽函数
-void MainWindow::on_toolButton_enter_general_clicked()
-{
-    if(w==0)
-        ui->lineEdit_length->setText(ui->lineEdit_keyboard_general->text());
-    else if(w==1)
-        ui->lineEdit_sensitivity->setText(ui->lineEdit_keyboard_general->text());
-    else if(w==2)
-        ui->lineEdit_password->setText(ui->lineEdit_keyboard_general->text());
-    ui->keyboard_general->hide();
-}
-
-//通用键盘ce槽函数
-void MainWindow::on_toolButton_ce_general_clicked()
-{
-    ui->lineEdit_keyboard_general->setText("");
-}
-
-//采样时间键盘exit槽函数--按下退出键盘
-void MainWindow::on_toolButton_exit_SampleTime_clicked()
-{
-    ui->keyboard_SampleTime->hide();
-}
-
-//采样时间键盘ce槽函数
-void MainWindow::on_toolButton_ce_SampleTime_clicked()
-{
-    ui->lineEdit_keyboard_SampleTime->setText("");
-}
-
-//采样时间键盘Enter键槽函数
-void MainWindow::on_toolButton_enter_SampleTime_clicked()
-{
-    ui->lineEdit_SampleTime->setText(ui->lineEdit_keyboard_SampleTime->text());
-    ui->keyboard_SampleTime->hide();
-}
-
-
-//时间键盘ce槽函数
-void MainWindow::on_toolButton_ce_Time_clicked()
-{
-    ui->lineEdit_keyboard_Time->setText("");
-}
-
-//时间键盘exit槽函数--按下退出键盘
-void MainWindow::on_toolButton_exit_Time_clicked()
-{
-    ui->keyboard_Time->hide();
-}
-
-//时间键盘Enter键槽函数
-void MainWindow::on_toolButton_enter_Time_clicked()
-{
-    if(w==3)
-        ui->lineEdit_StartTime->setText(ui->lineEdit_keyboard_Time->text());
-    else if(w==4)
-        ui->lineEdit_EndTime->setText(ui->lineEdit_keyboard_Time->text());
-    ui->keyboard_Time->hide();
-}
-
