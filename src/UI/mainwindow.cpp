@@ -22,8 +22,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_password->installEventFilter(this);
     ui->lineEdit_SampleTime->installEventFilter(this);
     ui->lineEdit_StartTime->installEventFilter(this);
-    ui->lineEdit_StartTime->setMouseTracking(true);
     ui->lineEdit_EndTime->installEventFilter(this);
+    ui->comboBox_ChartData->lineEdit()->installEventFilter(this);
+
+    ui->lineEdit_StartTime->setMouseTracking(true);
+
+    ui->comboBox_ChartData->setView(new QListView);
+
 }
 
 MainWindow::~MainWindow()
@@ -801,6 +806,22 @@ void MainWindow::on_pushButton_new_clicked()
     ui->lineEdit_patientnumber->installEventFilter(this); //输入患者病例号编辑框加入事件过滤器
 }
 
+//恢复手术按钮槽函数--按下后"确认"按钮才可用
+void MainWindow::on_pushButton_recover_clicked()
+{
+    ui->pushButton_sure->setEnabled(true);
+    ui->pushButton_sure->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
+    ui->lineEdit_patientnumber->setEnabled(false);  //输入患者病例号编辑框禁用
+}
+
+//查询手术按钮槽函数--按下后"确认"按钮才可用
+void MainWindow::on_pushButton_inquire_clicked()
+{
+    ui->pushButton_sure->setEnabled(true);
+    ui->pushButton_sure->setStyleSheet("background-color:rgba(24,144,255,1);color:rgba(255,255,255,1);border-radius: 18px; font: 18px;");
+    ui->lineEdit_patientnumber->setEnabled(false);  //输入患者病例号编辑框禁用
+}
+
 //步骤四点击预充槽函数--按下后"下一步"按钮才可用,冲洗泵显示已连接
 void MainWindow::on_pushButton_step4_prefilled_clicked()
 {
@@ -1061,15 +1082,106 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
     //患者病例号输入
     else if((watched == ui->lineEdit_patientnumber) && (event->type() == QEvent::MouseButtonPress))
     {
-        Dialogkeygeneral A;
+        if(ui->lineEdit_patientnumber->isEnabled())  //输入框未被禁用才能弹出键盘进行编辑
+        {
+            Dialogkeygeneral A;
+            A.exec();
+            if(A.enter==1)
+            {
+                QString patientnumberStr = A.edit;
+                ui->lineEdit_patientnumber->setText(patientnumberStr);
+            }
+        }
+
+    }
+
+    //"表格时间"下拉框实现可编辑---点击下拉框的lineEdit则弹出键盘，点击右侧小箭头则出现下拉框
+    else if((watched == ui->comboBox_ChartData->lineEdit()) && (event->type() == QEvent::MouseButtonPress))
+    {
+        Dialogkeytime A;
+        A.switchkey2();
         A.exec();
         if(A.enter==1)
         {
-            QString patientnumberStr = A.edit;
-            ui->lineEdit_patientnumber->setText(patientnumberStr);
+            QString dateStr = A.edit;
+            if(dateStr.length()==8)
+            {
+
+                QString yearStr = dateStr.mid(0, 4);
+                dataYearInt = yearStr.toInt();
+                QString monthStr = dateStr.mid(4, 2);
+                dataMonthInt = monthStr.toInt();
+                QString dayStr = dateStr.mid(6, 2);
+                dataDayInt = dayStr.toInt();
+                //如果是闰年
+                if((dataYearInt % 4 == 0 && dataYearInt % 100 != 0)||(dataYearInt % 400 == 0))
+                {
+                    //大月
+                    if((dataMonthInt==1)||(dataMonthInt==3)||(dataMonthInt==5)||(dataMonthInt==7)||(dataMonthInt==8)||(dataMonthInt==10)||(dataMonthInt==12))
+                    {
+                        if(dataDayInt<=31)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //小月
+                    else if((dataMonthInt==4)||(dataMonthInt==6)||(dataMonthInt==9)||(dataMonthInt==11))
+                    {
+                        if(dataDayInt<=30)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //2月
+                    else if(dataMonthInt==2)
+                    {
+                        if(dataDayInt<=29)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                }
+                else
+                {
+                    //大月
+                    if((dataMonthInt==1)||(dataMonthInt==3)||(dataMonthInt==5)||(dataMonthInt==7)||(dataMonthInt==8)||(dataMonthInt==10)||(dataMonthInt==12))
+                    {
+                        if(dataDayInt<=31)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //小月
+                    else if((dataMonthInt==4)||(dataMonthInt==6)||(dataMonthInt==9)||(dataMonthInt==11))
+                    {
+                        if(dataDayInt<=30)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                    //2月
+                    else if(dataMonthInt==2)
+                    {
+                        if(dataDayInt<=28)
+                            ui->comboBox_ChartData->setEditText(yearStr+"-"+monthStr+"-"+dayStr);
+                        else
+                            qDebug() << "输入日期有误,没有这一天";
+                    }
+                }
+
+            }
+            else
+            {
+                qDebug() << "输入日期格式不正确";
+                dataYearInt = dataMonthInt = dataDayInt =0;
+            }
         }
 
     }
 
     return QMainWindow::eventFilter(watched,event);
 }
+
+
+
+

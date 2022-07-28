@@ -179,7 +179,8 @@ public slots:
     void powerOffHandle();
 private slots:
     void on_pushButton_new_clicked();//新建手术按钮槽函数
-    void on_pushButton_step4_prefilled_clicked();//步骤四点击预充槽函数
-
+    void on_pushButton_recover_clicked();//恢复手术按钮槽函数
+    void on_pushButton_inquire_clicked();//查询手术按钮槽函数
+    void on_pushButton_step4_prefilled_clicked();//步骤四点击预充槽函数  
 };
 #endif // MAINWINDOW_H

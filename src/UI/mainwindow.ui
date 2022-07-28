@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_SelfTest"/>
     <widget class="QWidget" name="page_BootOptions">
@@ -69,7 +69,7 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="page_check">
        <widget class="QLabel" name="label_19">
@@ -4904,7 +4904,15 @@ font: 16px &quot;Ubuntu&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/ic_设置.png);</string>
+       <string notr="true">QPushButton
+{
+image: url(:/ic_设置.png);
+}
+QPushButton:pressed
+{
+	padding-left:1px;
+	padding-top:1px;
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -5513,10 +5521,36 @@ QListView::item:hover
 color:rgba(24,144,255,1);
 background-color: rgba(30,52,79,1);
 }
-QComboBox::additm{&quot;50&quot;};</string>
+
+/******** combobox 滚动条  *********/
+QComboBox QScrollBar::vertical
+{ /*主体部分*/
+    width:10px;
+    background:rgb(89,89,89);
+    border:none;
+    border-radius:5px;
+}
+QComboBox QScrollBar::handle::vertical
+{ /*滑块主体*/
+    border-radius:5px;
+    width: 10px;
+    background:rgb(173,173,173);
+}
+QComboBox QScrollBar::handle::vertical::hover
+{
+    background:rgb(232,232,232);
+}
+QComboBox QScrollBar::add-line::vertical
+{/*上箭头*/
+    border:none;
+}
+QComboBox QScrollBar::sub-line::vertical
+{/*下箭头*/
+    border:none;
+}</string>
       </property>
       <property name="editable">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="currentText">
        <string>2022-06-15</string>
@@ -5607,7 +5641,7 @@ QComboBox::additm{&quot;50&quot;};</string>
 border-radius: 18px;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_HistoricalData_Pump">
        <widget class="Line" name="line_31">
@@ -5958,7 +5992,15 @@ font: 18px &quot;Ubuntu&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/ic_设置.png);</string>
+       <string notr="true">QPushButton
+{
+image: url(:/ic_设置.png);
+}
+QPushButton:pressed
+{
+	padding-left:1px;
+	padding-top:1px;
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -6064,9 +6106,9 @@ border-color:rgb(17,40,67);</string>
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>160</y>
+        <y>90</y>
         <width>961</width>
-        <height>581</height>
+        <height>651</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -6082,9 +6124,9 @@ border-color:rgb(17,40,67);</string>
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>10</y>
-          <width>911</width>
-          <height>571</height>
+          <y>80</y>
+          <width>901</width>
+          <height>501</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -6098,19 +6140,36 @@ border-color:rgb(17,40,67);</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;序号	优先级     报警日志		发生时间		       	 解决方法&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;3	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;4	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;5	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;6	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;7	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;8	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;9	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;10	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;11	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;12	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;序号	优先级           报警日志		发生时间		       	 解决方法&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1	高	      泵控制故障报警  	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;3	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;4	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;5	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;6	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;7	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;8	高	      泵控制故障报警  	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;9	高	      泵控制故障报警      	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;10	高	      泵控制故障报警 	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;11	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;12	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_39">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>63</y>
+          <width>20</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">transform: scaleY(-1);
+background: #1890FF;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </widget>
@@ -6119,9 +6178,9 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>10</y>
+          <y>80</y>
           <width>901</width>
-          <height>551</height>
+          <height>501</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -6135,18 +6194,35 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;序号	优先级     报警日志		发生时间		       	 解决方法&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;3	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;4	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;5	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;6	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;7	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;8	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;9	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;10	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;11	高	泵控制故障报警	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;序号	优先级           报警日志		发生时间		       	 解决方法&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1	高	      泵控制故障报警  	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;3	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;4	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;5	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;6	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;7	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;8	高	      泵控制故障报警  	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;9	高	      泵控制故障报警      	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;10	高	      泵控制故障报警 	2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;11	高	      泵控制故障报警	                  2022-06-20 02:48:02	 请尽快联系医院&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_40">
+        <property name="geometry">
+         <rect>
+          <x>142</x>
+          <y>63</y>
+          <width>20</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">transform: scaleY(-1);
+background: #1890FF;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </widget>
@@ -6169,8 +6245,7 @@ p, li { white-space: pre-wrap; }
         background:transparent;
 }
 QPushButton:hover{color: rgb(24, 144, 255);}
-QPushButton:checked{color: rgb(24, 144, 255);
-												text-decoration:underline;}
+QPushButton:checked{color: rgb(24, 144, 255);}
 </string>
       </property>
       <property name="text">
@@ -6204,8 +6279,7 @@ QPushButton:checked{color: rgb(24, 144, 255);
         background:transparent;
 }
 QPushButton:hover{color: rgb(24, 144, 255);}
-QPushButton:checked{color: rgb(24, 144, 255);
-													text-decoration:underline;}
+QPushButton:checked{color: rgb(24, 144, 255);}
 </string>
       </property>
       <property name="text">
@@ -6378,7 +6452,7 @@ border-color:rgb(17,40,67);</string>
 }
 QPushButton:hover{color: rgb(24, 144, 255);}
 QPushButton:checked{color: rgb(24, 144, 255);
-												text-decoration:underline;}
+												}
 </string>
       </property>
       <property name="text">
@@ -6416,7 +6490,6 @@ QPushButton:checked{color: rgb(24, 144, 255);
 }
 QPushButton:hover{color: rgb(24, 144, 255);}
 QPushButton:checked{color: rgb(24, 144, 255);
-												text-decoration:underline;
 stackedWidget_alarm-&gt;setCurrentIndex(1);}
 </string>
       </property>
@@ -6449,7 +6522,6 @@ stackedWidget_alarm-&gt;setCurrentIndex(1);}
 }
 QPushButton:hover{color: rgb(24, 144, 255);}
 QPushButton:checked{color: rgb(24, 144, 255);
-												text-decoration:underline;
 stackedWidget_alarm-&gt;setCurrentIndex(1);}
 </string>
       </property>
@@ -6478,7 +6550,7 @@ border-radius: 18px;
 border-color:rgb(17,40,67);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_setting">
        <widget class="QLabel" name="label_125">
@@ -6838,6 +6910,23 @@ QPushButton:pressed
          <string>压力校零</string>
         </property>
        </widget>
+       <widget class="Line" name="line_36">
+        <property name="geometry">
+         <rect>
+          <x>45</x>
+          <y>73</y>
+          <width>20</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">transform: scaleY(-1);
+background: #1890FF;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page_information">
        <widget class="QLabel" name="label_132">
@@ -6922,8 +7011,6 @@ padding-bottom: 25px;
 QPushButton:pressed
 {
 	background-color:rgb(14, 36, 63);
-	padding-left:1px;
-	padding-top:82px;
 }</string>
         </property>
         <property name="text">
@@ -6955,6 +7042,23 @@ font-weight: 400;</string>
         </property>
         <property name="text">
          <string>深圳市核心医疗科技有限公司</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_37">
+        <property name="geometry">
+         <rect>
+          <x>134</x>
+          <y>73</y>
+          <width>20</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">transform: scaleY(-1);
+background: #1890FF;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </widget>
@@ -6990,7 +7094,7 @@ font-weight: 400;</string>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="pushButton_SystemSetting_upgrade">
@@ -7030,8 +7134,6 @@ padding-bottom: 25px;
 QPushButton:pressed
 {
 	background-color:rgb(14, 36, 63);
-	padding-left:1px;
-	padding-top:82px;
 }</string>
           </property>
           <property name="text">
@@ -7092,6 +7194,23 @@ color: rgb(255, 255, 255);
          </widget>
         </widget>
        </widget>
+       <widget class="Line" name="line_38">
+        <property name="geometry">
+         <rect>
+          <x>233</x>
+          <y>73</y>
+          <width>20</width>
+          <height>2</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">transform: scaleY(-1);
+background: #1890FF;</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
       </widget>
      </widget>
      <zorder>pushButton_SystemSetting_return</zorder>
@@ -7120,9 +7239,9 @@ color: rgb(255, 255, 255);
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_4"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup_4"/>
   <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
